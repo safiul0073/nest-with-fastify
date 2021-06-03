@@ -1,37 +1,20 @@
-import { Body, Controller, Get, Post, Req } from "@nestjs/common";
+import { Body, Controller, Get, Post, Req, Request, Res, UploadedFile, UseInterceptors } from "@nestjs/common";
+import { FastifyAdapter } from "@nestjs/platform-fastify";
+import multer from "fastify-multer/lib/lib/content-parser";
+import { FastifyMultipartAttactFieldsToBodyOptions } from "fastify-multipart";
 import {PostService} from "./post.service";
-const util = require('util')
-const path = require('path')
-const { pipeline } = require('stream')
-const fs = require('fs');
-const pump = util.promisify(pipeline)
+
+
 @Controller("post")
 export class PostController {
     
-    constructor(private readonly postService: PostService,) {
-        
-    }
-    @Post()
-    async create(@Req() req,
-                // @Body('title') title: string,
-                // @Body('description') description: string,
-                // @Body('image') image: File,
-                // @Body('status') status: boolean
-    ){
-            
-            // const data = await req.file();
+    constructor(private readonly postService: PostService,) {}
 
-            // data.file // stream
-            // data.fields // other parsed parts
-            // const name = data.fieldname
-            // data.filename
-            // data.encoding
-            // data.mimetype
-            // await pump(data.file, fs.createWriteStream(data.filename))
-            // // reply.send()
-            // const newPost = this.postService.addPost(title, description, image, status);
-            // return newPost;
-    }
+    // @Post()
+    // @UseInterceptors(FileInterceptor('file'))
+    // create(@UploadedFile() file ){
+    //     console.log(file)
+    // }
 
     @Get()
     async getData() {

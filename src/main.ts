@@ -5,10 +5,10 @@ import {
 } from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
 
-
 async function bootstrap() {
+
   const fAdapter = new FastifyAdapter();
-  fAdapter.register(require("fastify-multipart"))
+ 
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     fAdapter

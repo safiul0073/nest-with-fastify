@@ -11,7 +11,7 @@ export class UserController {
         @Body('email') email: string,
         @Body('password') password: string,
     ) {
-       const result =  this.userService.insertUser(name,email, password);
+       const result = await  this.userService.insertUser(name,email, password);
        return result;
     }
 
